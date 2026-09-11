@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منه أو نونه القلب ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1a0011, #4a0e2e, #1a0011);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* تأثير قلوب وورد في الخلفية */
+        .bg-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        .bg-hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #ff4d79;
+            animation: animate 15s linear infinite;
+            bottom: -150px;
+            transform: rotate(45deg);
+        }
+        .bg-hearts span::before, .bg-hearts span::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4d79;
+            border-radius: 50%;
+        }
+        .bg-hearts span::before { top: -10px; left: 0; }
+        .bg-hearts span::after { top: 0; left: -10px; }
+
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(45deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+        .card {
+            background: rgba(30, 10, 20, 0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1, h2 {
+            color: #ff85a2;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(255, 133, 162, 0.4);
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #fce4ec;
+        }
+        input[type="password"] {
+            width: 85%;
+            padding: 15px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            outline: none;
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0 15px 0;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: 0.3s;
+        }
+        input[type="password"]:focus {
+            border-color: #ff4d79;
+            box-shadow: 0 0 15px rgba(255, 77, 121, 0.5);
+        }
+        button {
+            background: linear-gradient(45deg, #ff2a5f, #ff758c);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 42, 95, 0.4);
+            margin-top: 10px;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 42, 95, 0.6);
+        }
+        .hidden {
+            display: none;
+        }
+        
+        #typing-text {
+            font-size: 24px;
+            line-height: 2;
+            min-height: 120px;
+            color: #fff;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .timer-box {
+            font-size: 19px;
+            background: rgba(255, 105, 180, 0.1);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            line-height: 1.8;
+            color: #ffebee;
+        }
+        .timer-box b {
+            color: #ff4d79;
+            font-size: 22px;
+        }
+
+        /* معرض الصور الفخم */
+        .photo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 105, 180, 0.5);
+        }
+        .photo-card img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .photo-card p {
+            font-size: 17px;
+            color: #ff85a2;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- خلفية متحركة بقلوب -->
+    <div class="bg-hearts">
+        <span style="left: 10%; width: 25px; height: 25px; animation-duration: 12s;"></span>
+        <span style="left: 25%; width: 15px; height: 15px; animation-duration: 18s;"></span>
+        <span style="left: 40%; width: 30px; height: 30px; animation-duration: 10s;"></span>
+        <span style="left: 60%; width: 20px; height: 20px; animation-duration: 15s;"></span>
+        <span style="left: 75%; width: 25px; height: 25px; animation-duration: 20s;"></span>
+        <span style="left: 90%; width: 18px; height: 18px; animation-duration: 14s;"></span>
+    </div>
+
+    <div class="container">
+        <!-- الصفحة الأولى: الباسورد -->
+        <div id="page-1" class="card">
+            <h1>جاهزة ي نونه؟ ❤️</h1>
+            <p>حطيتلك شويه حاجات هنا كدا، دخلي الباسورد عشان تفتحي المفاجأة الفخمة دي:</p>
+            <input type="password" id="passInput" placeholder="love nona">
+            <br>
+            <button onclick="checkPassword()">دخول ي نونه ✨</button>
+            <p id="errorMsg" style="color: #ff5252; margin-top: 15px; display: none; font-weight: bold;">الباسورد غلط ي نونه، اكتبيها صح (love nona)</p>
+        </div>
+
+        <!-- الصفحة الثانية: الكلام والأغنية -->
+        <div id="page-2" class="card hidden">
+            <h2>إهداء خاصة لنونه القمراية 🌸</h2>
+            <div id="typing-text"></div>
+            
+            <div style="margin: 25px 0; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px;">
+                <p style="font-size: 15px; margin-bottom: 10px; color: #ff85a2;">🎵 أغنيتك المميزة من التيك توك (شغليها وعيشي اللحظة):</p>
+                <iframe src="https://www.tiktok.com/embed/v2/7400000000000000000" style="width:100%; height:120px; border:none; border-radius:10px;" allowfullscreen></iframe>
+                <!-- زر بديل لو حابب تفتح الأغنية على التيك توك مباشرة -->
+                <a href="https://vt.tiktok.com/ZS4vUhy4h/" target="_blank" style="display:inline-block; margin-top:10px; color:#ff4d79; text-decoration:none; font-weight:bold; font-size:14px;">🔗 اضغط هنا للاستماع لأغنية التيك توك الأصلية</a>
+            </div>
+
+            <button onclick="nextPage(3)">التالي يا قلبي ➡️</button>
+        </div>
+
+        <!-- الصفحة الثالثة: العداد والتاريخ -->
+        <div id="page-3" class="card hidden">
+            <h2>حكايتنا وبدايتها 🥰</h2>
+            <p style="font-size: 19px;">يوم ما اتكلمنا مع بعض وكان تاريخ: <b style="color: #ff4d79;">10/5/2026</b></p>
+            <div class="timer-box" id="counter"></div>
+            <p style="font-size: 18px; margin-top: 15px;">كل ثانيه بتعدي وأنتي في قلبي ي نونه والله.. كلامي معاكي وأني أشوفك عندي بالدنيا كله ي نونه والله! ❤️✨</p>
+            <br>
+            <button onclick="nextPage(4)">شوفي ذكرياتنا وصورك الجميلة 📸🌹</button>
+        </div>
+
+        <!-- الصفحة الرابعة: الصور الفخمة والذكريات -->
+        <div id="page-4" class="card hidden" style="background: transparent; backdrop-filter: none; box-shadow: none; padding: 0;">
+            <h2 style="background: rgba(30, 10, 20, 0.85); padding: 20px; border-radius: 20px; margin-bottom: 25px; border: 1px solid rgba(255, 105, 180, 0.3);">أجمل ذكرياتنا وصورك يا نونه 🌹✨</h2>
+            
+            <!-- الصور مع الكلام والورد والقلوب -->
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/3yD6WdSK/image.jpg" alt="اول مرة شوفتك">
+                <p>🌹 دي اول مره شوفتك فيها أهي ي نونه.. أحلى صدفة غيرت حياتي كلها ❤️✨</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/VrQhtmp4/image.jpg" alt="اول مرة اعترفت">
+                <p>✨ ودي اول مره أعترفتلك فيها صريحه ي نونه.. قلبي ماستحملش يكتم حبك أكتر من كدا 💖🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/7CF2n3GQ/f5a23608.jpg" alt="ذكرى">
+                <p>🌸 بحبك ي نونه بكل تفاصيلك.. ضحكتك، عيونك، وكل كلمة بتقوليها بتسحرني 🌹</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/Z9Gdx8BQ/a869ed4e.jpg" alt="ذكرى">
+                <p>💖 يا رب دايماً مع بعض وفي ضه بعض، يا أجمل وأغلى نونه في الدنيا دي 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/p9wFJfh7/cc10235a.jpg" alt="ذكرى">
+                <p>🌹 وجودك بينور أيامي وبيخلي للحياة طعم تاني خالص يا ست البنات 💖</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/2qsZ7Qbs/4d999be6.jpg" alt="ذكرى">
+                <p>✨ عيونك هما الأمان بتاعي والملجأ اللي أرتاح فيه من تعب الدنيا ي نونه 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/d7byj2Zc/a417ca02.jpg" alt="ذكرى">
+                <p>🌹 بحب كل تفصيلة فيكي، ربنا ما يحرمني من طلتك الحلوة دي أبداً ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/Ny3Hk62w/0a929fd8.jpg" alt="ذكرى">
+                <p>💖 معاكي حسيت يعني ايه حب بجد وإني لقيت نصي التاني وروحي المفقودة 🌸</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/cgf89vwk/5bffd45b.jpg" alt="ذكرى">
+                <p>🌷 دايماً في قلبي وفي بالي مهما المسافات أو الظروف عدت يا نونه 🌹</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/Q9cW4F1n/83092234.jpg" alt="ذكرى">
+                <p>✨ أحلي لحظات عمري هي اللي بتعدي وأنا بكلمك وبسمع صوتك الدافي ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/vgv581TP/528bbd47.jpg" alt="ذكرى">
+                <p>🌹 ربنا يديمك نعمة في حياتي، ويحفظك ليا يا أغلى ما أملك 💖</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/NL4xBnr2/8d117757.jpg" alt="ذكرى">
+                <p>🌸 بحبك بحجم الكون يا أجمل صدفة وأحلى نونه في الوجود كله 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/HVk9xtQ5/228c24a1.jpg" alt="ذكرى">
+                <p>🌹 كل سطر بكتبه ليكي بيعبر عن جزء بسيط من حبي الكبير ليكي ي نونه ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/0by0QCpn/fddc801d.jpg" alt="ذكرى">
+                <p>✨ ضحكتك عندي بتسوى الدنيا وما فيها، تفضلي تضحكي وتملي حياتي فرحة 💖</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/YGtmPpRf/da7033d8.jpg" alt="ذكرى">
+                <p>🌸 بحبك بكل دقات قلبي، وبوعدك أفضل جنبك للأبد يا أحلى نونه 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/sGXGVwtF/627d510f.jpg" alt="ذكرى">
+                <p>🌹 أنتي البداية والنهاية لكل حاجة حلوة في دنيتي 💖</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/Jy5sZf8z/c65119e4.jpg" alt="ذكرى">
+                <p>✨ ربنا يخليكي ليا وما يحرمنيش منك أبداً يا كل حياتي ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/cgRbMPGX/image.jpg" alt="ذكرى">
+                <p>🌸 كل يوم بيعدي وأنا معاكي بيثبت لي قد إنتي إنسانة عظيمة وقريبة لقلبي 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/18d29pKN/image.jpg" alt="ذكرى">
+                <p>🌹 بحبك يا نونه في كل حالاتك.. في زعلك وفي فرحك، أنتي ملكة قلبي 💖</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/G4fVckjy/image.jpg" alt="ذكرى">
+                <p>✨ وجودك سندي وحياتي، بحبك عدد النجوم اللي في السحب ي نونه ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/xX8BDsLG/image.jpg" alt="ذكرى">
+                <p>🌸 يا رب يجمعنا في بيت واحد قريب جداً ونبقى مع بعض طول العمر 🌷</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://i.postimg.cc/VJv2Q7XX/image.jpg" alt="ذكرى">
+                <p>🌹 ختمنا الكلام وهيفضل حبي ليكي مالوش نهاية.. بحبك يا نونه للأبد 💖💍</p>
+            </div>
+
+            <div class="card" style="margin-top: 40px; text-align: center;">
+                <h2 style="color: #ff4d79;">بحبك يا نونه للأبد ❤️💍</h2>
+                <p style="font-size: 16px; color: #fce4ec;">صُنِع بكل الحب لعيون نونه وبس.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // التحقق من الباسورد
+        function checkPassword() {
+            const val = document.getElementById('passInput').value.trim().toLowerCase();
+            if (val === 'love nona') {
+                document.getElementById('page-1').classList.add('hidden');
+                document.getElementById('page-2').classList.remove('hidden');
+                startTyping();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        // الانتقال بين الصفحات
+        function nextPage(pageNum) {
+            document.querySelectorAll('.container > div').forEach(el => {
+                if(el.id !== 'page-1' && el.className.includes('card')) {
+                    el.classList.add('hidden');
+                }
+            });
+            document.getElementById('page-' + pageNum).classList.remove('hidden');
+            if(pageNum === 3) {
+                startTimer();
+            }
+        }
+
+        // تأثير الكتابة التلقائية للنص
+        const textToType = "أنتي احلي حاجه حصلت في دنيتي ي نونه.. بحبك ي نونه بكل تفاصيلك وبكل حاجة فيكي يا أجمل هدية ربنا بعتهالي ❤️";
+        let i = 0;
+        function startTyping() {
+            if (i < textToType.length) {
+                document.getElementById("typing-text").innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(startTyping, 65);
+            }
+        }
+
+        // عداد الوقت من يوم 10/5/2026
+        function startTimer() {
+            const startDate = new Date("2026-05-10T00:00:00");
+            setInterval(() => {
+                const now = new Date();
+                const diff = now - startDate;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById("counter").innerHTML = 
+                    `مر على بداية حبنا وكلامنا:<br><b>${days}</b> يوم و <b>${hours}</b> ساعة و <b>${minutes}</b> دقيقة و <b>${seconds}</b> ثانية ❤️`;
+            }, 1000);
+        }
+    </script>
+</body>
